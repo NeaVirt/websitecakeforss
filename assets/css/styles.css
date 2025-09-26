@@ -8,7 +8,7 @@
   --white: #ffffff;
   --text: #f0f4f8;        /* Softer text color */
   --muted: #a8b2c1;       /* Refined muted color */
-  --radius: 16px;
+  --radius: 6px;
   --shadow: 0 10px 30px rgba(0,0,0,0.25);
   --shadow-gold: 0 8px 25px rgba(212, 175, 55, 0.2);
   --font-serif: "Playfair Display", serif;
@@ -18,29 +18,56 @@
 /* RESET */
 *{box-sizing:border-box; margin:0;}
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   background: var(--navy-3); /* Solid darkest navy instead of gradient */
   color: var(--text);
-  line-height: 1.6;
   position: relative;
 }
 
-/* Remove the radial gradient balls */
-/* body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
-} */
+
 img{max-width:100%; display:block;}
 a{text-decoration:none; color:inherit;}
+
+
+/* Spacing */
+.u-m-0 { margin: 0; }
+.u-mb-8 { margin-bottom: 0.5rem; }
+.u-mb-16 { margin-bottom: 1rem; }
+.u-mb-24 { margin-bottom: 1.5rem; }
+.u-mt-16 { margin-top: 1rem; }
+.u-mt-24 { margin-top: 1.5rem; }
+.u-p-8 { padding: 0.5rem; }
+.u-p-16 { padding: 1rem; }
+.u-pt-16 { padding-top: 1rem; }
+.u-pb-16 { padding-bottom: 1rem; }
+
+/* Layout */
+.u-text-center { text-align: center; }
+.u-flex { display: flex; }
+.u-flex-center { display: flex; align-items: center; justify-content: center; }
+.u-grid { display: grid; gap: 1rem; }
+
+/* Look & feel (uses design tokens) */
+.u-shadow { box-shadow: var(--shadow); }
+.u-shadow-gold { box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2); }
+.u-radius { border-radius: var(--radius); }
+.u-bg-navy { background: var(--navy); }
+.u-color-gold { color: var(--gold); }
+
+/* Visibility & accessibility */
+.u-hidden { display: none !important; }
+.u-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  .u-hide-on-sm { display: none !important; }
+}
+@media (min-width: 769px) {
+  .u-hide-on-lg { display: none !important; }
+}
 
 /* CONTAINER */
 .container{
@@ -84,24 +111,42 @@ a{text-decoration:none; color:inherit;}
   padding: 0 2rem; /* Add padding back here */
 }
 
-.nav__links a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
+.nav__link {
+  color: var(--white);
   padding: 0.5rem 1rem; /* Reduced from 0.75rem 1.25rem */
   border-radius: var(--radius);
   transition: all 0.3s ease;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  background: rgba(212, 175, 55, 0.05);
-  font-size: 0.9rem; /* Slightly smaller text */
+  /*border: 0.5px solid var(--gold);*/
+  background: transparent;
+  font-size: 1rem; /* Slightly smaller text */
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.nav__links a:hover {
-  color: var(--gold);
-  border-color: var(--gold);
-  background: rgba(212, 175, 55, 0.1);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+.nav__link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  background-image: var(--stardust-bg, none);
+  background-size: contain;
+
+  background-position: center;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+
+  
+}
+
+.nav__link:hover::after {
+  opacity: 1;
+  transform: scale3d(1.2, 1.1, 1.2);
 }
 
 /* NAV TOGGLE BUTTON - Consolidated */
@@ -139,37 +184,6 @@ a{text-decoration:none; color:inherit;}
   border: 0;
 }
 
-/* Enhanced button styling */
-.btn--small {
-  padding: 0.75rem 1.5rem;
-  background: var(--gold);
-  color: var(--navy);
-  border: 2px solid var(--gold);
-  border-radius: var(--radius);
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-}
-
-.btn--small:hover {
-  background: transparent;
-  color: var(--gold);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-}
-
-/* Arrow button styling */
-.nav__links a[href="#top"] {
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.20rem 0.5rem; /* Slightly smaller padding for the arrow */
-  min-width: 40px; /* Ensure consistent width */
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 /* MOBILE NAVIGATION - Consolidated */
 @media (max-width: 768px) {
@@ -200,9 +214,17 @@ a{text-decoration:none; color:inherit;}
   }
 }
 .logo{
-  font-family:var(--font-serif);
-  font-size:1.4rem;
-  font-weight:700;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 650;
+  color: var(--gold-light);
+  letter-spacing: 0.01em;
+}
+
+.logo:hover,
+.logo:focus{
+  color: var(--gold-light);
+  outline: none;
 }
 
 /* BUTTONS */
@@ -210,7 +232,7 @@ a{text-decoration:none; color:inherit;}
 /* Add base button styles */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius);
   font-weight: 600;
   text-align: center;
@@ -376,12 +398,11 @@ a{text-decoration:none; color:inherit;}
 .gallery {
   margin: 3rem auto;
 }
-.gallery h2 {
+.gallery__title {
   font-family: var(--font-serif);
   color: var(--gold);
   font-size: 2rem;
   margin-bottom: 2rem;
-  text-align: center;
 }
 .gallery__grid {
   display: grid;
@@ -426,7 +447,6 @@ a{text-decoration:none; color:inherit;}
 .gallery__item figcaption {
   color: var(--muted);
   font-size: 1rem;
-  text-align: center;
 }
 @media (max-width: 900px) {
   .gallery__grid {
@@ -458,7 +478,7 @@ html {
 }
 
 /* Accessibility Improvements */
-.nav__links a:focus,
+.nav__link:focus,
 .gallery__item:focus-within {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
@@ -469,12 +489,11 @@ html {
   margin: 4rem auto;
 }
 
-.pricing h2 {
+.pricing__title {
   font-family: var(--font-serif);
   color: var(--gold);
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  text-align: center;
 }
 
 .pricing__grid {
@@ -589,7 +608,7 @@ html {
     gap: 2rem;
   }
   
-  .pricing h2 {
+  .pricing__title {
     font-size: 2rem;
   }
   
@@ -621,7 +640,7 @@ html {
   margin-bottom: 3rem;
 }
 
-.about h2 {
+.about__title {
   font-family: var(--font-serif);
   color: var(--gold);
   font-size: 3rem;
@@ -758,7 +777,7 @@ html {
     gap: 2rem;
   }
   
-  .about h2 {
+  .about__title {
     font-size: 2.5rem;
   }
   
@@ -768,7 +787,7 @@ html {
 }
 
 @media (max-width: 768px) {
-  .about h2 {
+  .about__title {
     font-size: 2rem;
   }
   
@@ -796,7 +815,7 @@ html {
   margin-bottom: 3rem;
 }
 
-.order h2 {
+.order__title {
   font-family: var(--font-serif);
   color: var(--gold);
   font-size: 2.5rem;
@@ -941,7 +960,7 @@ html {
 
 /* Responsive design for form */
 @media (max-width: 768px) {
-  .order h2 {
+  .order__title {
     font-size: 2rem;
   }
   
@@ -1056,7 +1075,7 @@ main {
 }
 
 /* Add text shadows to headings for more depth */
-.gallery h2, .pricing h2, .about h2, .order h2 {
+.gallery__title, .pricing__title, .about__title, .order__title {
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
@@ -1074,7 +1093,7 @@ main {
 }
 
 /* Add focus states for better accessibility */
-.nav__links a:focus,
+.nav__link:focus,
 .btn:focus,
 input:focus,
 select:focus,
