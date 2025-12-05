@@ -236,142 +236,18 @@
                 </div>
               </div>
             </div>
-            
-            <div class="about__cta">
-              <a href="#tilaus" class="btn btn--royal">Tilaa omasi</a>
-            </div>
           </div>
-        </div>
       </section>
 
       <section id="tilaus" class="order container">
         <div class="order__header">
           <h2 class="order__title u-text-center">👑 Tilaa Kakkukuninkaalta</h2>
-          <p class="order__subtitle">Täytä lomake tai tilaa soittamalla 040 123 4567</p>
+          <p class="order__subtitle">Tilaa soittamalla 040 123 4567</p>
         </div>
-        <!-- FOR TESTING THE FORM SUBMISSION-->
-        <form class="order__form" name="cake-order" method="POST" action="success.html">
-          <!-- Netlify hidden field -->
-          <input type="hidden" name="form-name" value="cake-order" />
-          <p class="hidden">
-            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-          </p>
-          
-          <!-- Customer Information -->
-          <div class="form__section">
-            <h3> Yhteystiedot</h3>
-            <div class="form__grid">
-              <div class="form__group">
-                <label for="name">Nimi *</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form__group">
-                <label for="email">Sähköposti *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form__group">
-                <label for="phone">Puhelinnumero</label>
-                <input type="tel" id="phone" name="phone">
-              </div>
-              <div class="form__group">
-                <label for="location">Toimitustapa</label>
-                <select id="location" name="location">
-                  <option value="">Valitse toimitustapa</option>
-                  <option value="nouto">Nouto Forssista</option>
-                  <option value="toimitus">Toimitus Tampereen seudulla</option>
-                  <option value="keskustelu">Keskustellaan erikseen</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Event Details -->
-          <div class="form__section">
-            <h3> Tilaisuuden tiedot</h3>
-            <div class="form__grid">
-              <div class="form__group">
-                <label for="event-type">Tilaisuuden tyyppi</label>
-                <select id="event-type" name="event-type">
-                  <option value="">Valitse tilaisuuden tyyppi</option>
-                  <option value="syntymapaiva">Syntymäpäivä</option>
-                  <option value="rippi">Rippijuhlat</option>
-                  <option value="yo">Ylioppilasjuhlat</option>
-                  <option value="hautajaiset">Hautajaiset</option>
-                  <option value="yritys">Yritystilaisuus</option>
-                  <option value="muu">Muu tilaisuus</option>
-                </select>
-              </div>
-              <div class="form__group">
-                <label for="event-date">Tilaisuuden päivä</label>
-                <input type="date" id="event-date" name="event-date">
-              </div>
-              <div class="form__group">
-                <label for="serving-size">Tarjoilukoko</label>
-                <select id="serving-size" name="serving-size">
-                  <option value="">Valitse tarjoilukoko</option>
-                  <option value="10">10 henkilöä</option>
-                  <option value="15">15 henkilöä</option>
-                  <option value="20">20 henkilöä</option>
-                  <option value="30">30 henkilöä</option>
-                  <option value="40">40+ henkilöä</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Cake Preferences -->
-          <div class="form__section">
-            <h3>🎂 Kakkupreferenssit</h3>
-            <div class="form__grid">
-              <div class="form__group">
-                <label for="cake-type">Kakkutyyppi</label>
-                <select id="cake-type" name="cake-type">
-                  <option value="">Valitse kakkutyyppi</option>
-                  <option value="erikoiskakut">Erikoiskakut</option>
-                  <option value="suklaakakku">Suklaakakku</option>
-                  <option value="mansikkajuustokakku">Mansikkajuustokakku</option>
-                  <option value="fruitbowl">Fruit Bowl-kakku</option>
-                  <option value="perinteinen-mansikka">Perinteinen mansikka/kinuskitäytekakku</option>
-                  <option value="kustomoitu">Kustomoitu kakku</option>
-                </select>
-              </div>
-              <div class="form__group">
-                <label for="filling">Täyte</label>
-                <select id="filling" name="filling">
-                  <option value="">Valitse täyte</option>
-                  <option value="mansikka">Mansikka</option>
-                  <option value="sitruuna-mansikka">Sitruuna-mansikka</option>
-                  <option value="suklaa">Suklaa</option>
-                  <option value="kinuski">Kinuski</option>
-                  <option value="raparperi">Raparperi</option>
-                  <option value="muu">Muu täyte</option>
-                </select>
-              </div>
-            </div>
-            <div class="form__group">
-              <label for="special-requests">Erityistoiveet ja kuvaus</label>
-              <textarea id="special-requests" name="special-requests" rows="4" placeholder="Kuvaile toiveesi kakkusta, värejä, teemaa tai muita erityistoiveita..."></textarea>
-            </div>
-          </div>
-          
-          <!-- Reference Photos -->
-          <div class="form__section">
-            <h3> Viitekuvat (valinnainen)</h3>
-            <div class="form__group">
-              <label for="reference-photos">Lataa viitekuvat toivomastasi kakkusta</label>
-              <input type="file" id="reference-photos" name="reference-photos" accept="image/*" multiple>
-              <small>Voit ladata useita kuvia. Tiedostot: JPG, PNG, max 10MB per kuva.</small>
-            </div>
-          </div>
-          
-          <!-- Submit Button -->
-          <div class="form__submit">
-            <button type="submit" class="btn btn--royal btn--large">
-               Lähetä tilaus Kakkukuninkaalle
-            </button>
-          </div>
-        </form>
+       
+        
       </section>
+
   </main>
 
   <footer class="site-footer">
@@ -385,8 +261,6 @@
       </p>
     </div>
   </footer>
-
-</main>
 
 <!-- Link JS file for navigation toggle -->
 <script src="assets/js/main.js"></script>
